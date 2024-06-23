@@ -1,0 +1,15 @@
+.liste-vols-header {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 30px;
+}
+
+.vols-filter-form-field {
+  flex-grow: 2;
+}
+
+.bouton-ajout-vol {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}

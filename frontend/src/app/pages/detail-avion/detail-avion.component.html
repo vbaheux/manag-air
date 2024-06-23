@@ -1,0 +1,21 @@
+@if (avion) {
+  <div class="detail-page">
+    <h2>Liste des vols pour l'avion</h2>
+    @if (avion.vols) {
+      <app-liste-vols [vols]="avion.vols" [parent]="volsParent">
+        <div class="detail-card">
+          <p class="card-title">Avion N°{{avion.id}}</p>
+          <p class="card-subtitle">{{avion.nom}}</p>
+          <p class="card-content">
+            <mat-icon fontIcon="people"/>
+            <span>{{avion.capacite}} places</span>
+          </p>
+          <p class="card-content">
+            <mat-icon fontIcon="location_on"/>
+            <span>{{avion.localisation}}</span>
+          </p>
+        </div>
+      </app-liste-vols>
+    }
+  </div>
+}

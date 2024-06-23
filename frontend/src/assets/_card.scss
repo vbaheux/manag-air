@@ -1,0 +1,46 @@
+@mixin card {
+  :host {
+    .home-card, .detail-card {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 5px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      flex-grow: 4;
+    }
+
+    .home-card {
+      margin: 20px;
+      padding: 20px;
+    }
+
+    .detail-card {
+      margin: 0 0 22px 0;
+      padding: 0 20px 0 20px;
+      .card-title, .card-subtitle {
+        margin: 0;
+      }
+    }
+
+    .card-title {
+      font-size: medium;
+    }
+
+    .card-subtitle {
+      font-size: 11pt;
+      font-weight: 550;
+      color: #585858
+    }
+
+    .card-content {
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      mat-icon {
+        margin-bottom: 2px;
+      }
+    }
+  }
+}

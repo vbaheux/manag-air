@@ -1,0 +1,54 @@
+$title-primary: #3f51b5;
+
+main {
+  height: 100%;
+}
+
+.content {
+  height: 90%;
+}
+
+app-home-button {
+  position: absolute;
+  left: 30px;
+}
+
+h1 {
+  color: $title-primary;
+  text-align: center;
+  padding: 20px 0 20px 0;
+  font-size: 40pt;
+  font-weight: bold;
+  span {
+    font-variant-caps: all-small-caps;
+  }
+  mat-icon {
+    transform: scale(2);
+    margin: 0 0 0 16px;
+  }
+}
+
+.detail-card {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-title {
+  font-size: medium;
+}
+
+.card-subtitle {
+  font-size: 11pt;
+  font-weight: 550;
+  color: #585858
+}
+
+.card-content {
+  margin-bottom: 0;
+}

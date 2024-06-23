@@ -1,0 +1,16 @@
+mat-dialog-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 20px;
+  :first-child {
+    flex-basis: 444px;
+  }
+  :not(:first-child) {
+    flex-basis: 212px;
+  }
+}
+
+mat-dialog-actions {
+  padding: 0 20px 20px 0;
+}

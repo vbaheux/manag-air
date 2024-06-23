@@ -1,0 +1,55 @@
+<div class="liste-vols-container">
+  <div class="liste-vols-header">
+    <ng-content></ng-content>
+    <mat-form-field class="vols-filter-form-field">
+      <mat-label>Filtrer...</mat-label>
+      <input matInput placeholder="Ex. Amelia Earhart" [(ngModel)]="filterString" (keyup)="filterData($event)">
+      @if (filterString) {
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="filterString=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="id"> N° de vol</th>
+      <td mat-cell *matCellDef="let vol">{{vol.id}}</td>
+    </ng-container>
+    @if (parent?.type === ListeVolsParentType.AVION) {
+      <ng-container matColumnDef="pilote">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="pilote">Pilote</th>
+        <td mat-cell *matCellDef="let vol">{{vol.pilote.nom}} ({{vol.pilote.adresse}})</td>
+      </ng-container>
+    }
+    @if (parent?.type === ListeVolsParentType.PILOTE) {
+      <ng-container matColumnDef="avion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="avion">Avion</th>
+        <td mat-cell *matCellDef="let vol">N°{{vol.avion.id}} - {{vol.avion.nom}} (Capacité: {{vol.avion.capacite}})</td>
+      </ng-container>
+    }
+    <ng-container matColumnDef="villeDepart">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="villeDepart">Ville de départ</th>
+      <td mat-cell *matCellDef="let vol">{{vol.villeDepart}}</td>
+    </ng-container>
+    <ng-container matColumnDef="heureDepart">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="heureDepart">Heure de départ</th>
+      <td mat-cell *matCellDef="let vol">{{vol.heureDepart}}</td>
+    </ng-container>
+    <ng-container matColumnDef="villeArrivee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="villeArrivee">Ville d'arrivée</th>
+      <td mat-cell *matCellDef="let vol">{{vol.villeArrivee}}</td>
+    </ng-container>
+    <ng-container matColumnDef="heureArrivee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="heureArrivee">Heure d'arrivée</th>
+      <td mat-cell *matCellDef="let vol">{{vol.heureArrivee}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<app-nouveau-vol-button [parent]="parent" (save)="onNewVolSave($event)"/>
+

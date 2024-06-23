@@ -1,0 +1,9 @@
+<div class="home-card">
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <a mat-raised-button color="primary" [routerLink]="[route, id]">
+    <span>Voir les vols</span>
+    <mat-icon aria-hidden="false" aria-label="Lien vers les vols" fontIcon="flight" iconPositionEnd></mat-icon>
+  </a>
+</div>

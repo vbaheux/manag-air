@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>Ajouter un vol</h2>
+<form [formGroup]="newVolForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field hintLabel="au format AA1234">
+      <mat-label>Numéro de vol</mat-label>
+      <input matInput formControlName="id" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ville de départ</mat-label>
+      <input matInput #villeDepart formControlName="villeDepart" required>
+      <mat-hint>max. {{villeDepart.value.length}}/20</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ville d'arrivée</mat-label>
+      <input matInput #villeArrivee formControlName="villeArrivee" required>
+      <mat-hint>max. {{villeArrivee.value.length}}/20</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="au format HH:MM">
+      <mat-label>Heure de départ</mat-label>
+      <input matInput formControlName="heureDepart" required>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="au format HH:MM">
+      <mat-label>Heure d'arrivée</mat-label>
+      <input matInput formControlName="heureArrivee" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Avion @if (parent.type === ListeVolsParent.AVION) { (page courante) }</mat-label>
+      <mat-select formControlName="avionId" required>
+        @if (parent.type === ListeVolsParent.AVION) {
+          <mat-option [value]="parent.id">N°{{parent.id}} - {{parent.nom}}</mat-option>
+        } @else {
+          @for (avion of avions; track avion.id) {
+            <mat-option [value]="avion.id">N°{{avion.id}} - {{avion.nom}}</mat-option>
+          }
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Pilote @if (parent.type === ListeVolsParent.PILOTE) { (page courante) }</mat-label>
+      <mat-select formControlName="piloteId" required>
+        @if (parent.type === ListeVolsParent.PILOTE) {
+          <mat-option [value]="parent.id">{{parent.nom}}</mat-option>
+        } @else {
+          @for (pilote of pilotes; track pilote.id) {
+            <mat-option [value]="pilote.id">{{pilote.nom}}</mat-option>
+          }
+        }
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button type="reset" (click)="onClose()">Annuler</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="newVolForm.invalid">OK</button>
+  </mat-dialog-actions>
+</form>

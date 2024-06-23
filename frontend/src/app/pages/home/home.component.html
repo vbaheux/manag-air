@@ -1,0 +1,28 @@
+<div class="home">
+  <div class="list-container">
+    <h1>Pilotes</h1>
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="list-viewport">
+    <div *cdkVirtualFor="let pilote of pilotes" role="list" class="card-list">
+        <home-card [route]="'/pilotes'" [id]="pilote.id">
+            <p class="card-title">{{pilote.nom}}</p>
+            <p class="card-content">Adresse: {{pilote.adresse}}</p>
+        </home-card>
+    </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <div class="list-container">
+    <h1>Avions</h1>
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="list-viewport">
+    <div *cdkVirtualFor="let avion of avions" role="list" class="card-list">
+        <home-card [route]="'/avions'" [id]="avion.id">
+            <p class="card-title">Appareil n°{{avion.id}}</p>
+            <p class="card-subtitle">{{avion.nom}}</p>
+            <p class="card-content">
+            Capacité : {{avion.capacite}} personnes<br/>
+            Localisation : {{avion.localisation}}
+            </p>
+        </home-card>
+    </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

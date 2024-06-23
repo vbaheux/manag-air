@@ -1,0 +1,13 @@
+<main class="main">
+  <h1 class="main-title">
+    @if(router.url !== '/') {
+      <app-home-button/>
+    }
+    <span>Manag'Air</span>
+    <mat-icon fontIcon="flight_takeoff"></mat-icon>
+  </h1>
+  <div class="content">
+    <router-outlet />
+  </div>
+</main>
+

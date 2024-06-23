@@ -1,0 +1,25 @@
+# Run with Docker Compose version 2.20.3 and later, or Docker Desktop version 4.22 and later.
+
+include:
+  - path:
+    - database/docker-compose.yml
+
+services:
+  managair-backend:
+    build: ./backend
+    ports:
+    - "3000:3000"
+    healthcheck:
+      test: curl --fail http://host.docker.internal:3000/health || exit 1
+      timeout: 10s
+      retries: 5
+    depends_on:
+      managair-db:
+        condition: service_healthy
+  managair-frontend:
+    build: frontend
+    ports:
+      - "3001:80"
+    depends_on:
+      managair-backend:
+        condition: service_healthy

@@ -1,0 +1,7 @@
+@mixin detail-page {
+  :host {
+    .detail-page {
+      margin: 0 50px 0 50px;
+    }
+  }
+}
